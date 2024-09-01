@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
+  const CourseCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +18,7 @@ class CourseCard extends StatelessWidget {
           // Course Image
           Container(
             height: 150,
-            decoration: BoxDecoration(
+            decoration:const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
@@ -131,7 +133,6 @@ class CourseCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-
                 Center(
                   child: ElevatedButton(
                     onPressed: () {},

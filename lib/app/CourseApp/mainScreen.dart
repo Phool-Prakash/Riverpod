@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_flutter/app/CourseApp/CategoryButtton.dart';
+import 'package:riverpod_flutter/app/CourseApp/Courses/RecAddCourses/RecAddedCoursesMainScreen.dart';
+import 'package:riverpod_flutter/app/CourseApp/Courses/RecAddCourses/RecentCourseListItem.dart';
+import 'package:riverpod_flutter/app/CourseApp/Courses/popularCourses/popularCoursesMainScreen.dart';
 import 'package:riverpod_flutter/app/CourseApp/CustomCard.dart';
 
 import 'filterCourses.dart';
@@ -109,95 +112,167 @@ class _MainScreenState extends State<MainScreen> {
                 height: 10,
               ),
               Container(
-                  width: MediaQuery.sizeOf(context).width,
-                  height: 430,
-                  color: Colors.white,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8, right: 8),
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                'Popular Courses',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                width: MediaQuery.sizeOf(context).width,
+                height: 430,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Popular Courses',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (builder) =>
+                                        const PopularCoursesMainScreen()));
+                              },
+                              child: const Row(
+                                children: [
+                                  Text(
+                                    'See All',
+                                    style:
+                                    TextStyle(color: Colors.lightBlueAccent),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    color: Colors.lightBlueAccent,
+                                  )
+                                ],
                               ),
-                              Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: TextButton.icon(
-                                  label: const Text('See All'),
-                                  iconAlignment: IconAlignment.start,
-                                  icon: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.arrow_back,
-                                        color: Colors.blue,
-                                      )),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ],
-                          ),
+                            )
+                          ],
                         ),
                       ),
-                      // const SizedBox(height: 10,),
-                    SizedBox(height: 350,child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        CourseCard(),
-                        CourseCard(),
-                        CourseCard()
-                      ],
-                    ),)
-                    ],
-                  ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Filter Courses',
-                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 16),
-                    GridView.count(
-                      crossAxisCount: 2,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      children: [
-                        FilterCourseButton(
-                          color: Colors.red,
-                          label: 'Live\nCourses',
-                          icon: Icons.play_arrow,
-                        ),
-                        FilterCourseButton(
-                          color: Colors.blue,
-                          label: 'Test\nSeries',
-                          icon: Icons.edit,
-                        ),
-                        FilterCourseButton(
-                          color: Colors.green,
-                          label: 'Recorded\nCourses',
-                          icon: Icons.video_library,
-                        ),
-                        FilterCourseButton(
-                          color: Colors.orange,
-                          label: 'All\nCourses',
-                          icon: Icons.list,
-                        ),
-                      ],
-                    ),
+                    // const SizedBox(height: 10,),
+                    SizedBox(
+                      height: 350,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: const [CourseCard(), CourseCard(), CourseCard()],
+                      ),
+                    )
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: MediaQuery.sizeOf(context).width,
+                height: 450,
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Filter Courses',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 16),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        crossAxisSpacing: 16,
+                        mainAxisSpacing: 16,
+                        children: [
+                          FilterCourseButton(
+                            color: Colors.red,
+                            label: 'Live\nCourses',
+                            icon: Icons.play_arrow,
+                          ),
+                          FilterCourseButton(
+                            color: Colors.blue,
+                            label: 'Test\nSeries',
+                            icon: Icons.edit,
+                          ),
+                          FilterCourseButton(
+                            color: Colors.green,
+                            label: 'Recorded\nCourses',
+                            icon: Icons.video_library,
+                          ),
+                          FilterCourseButton(
+                            color: Colors.orange,
+                            label: 'All\nCourses',
+                            icon: Icons.list,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: MediaQuery.sizeOf(context).width,
+                height: 450,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 12.0,left: 18,top: 12,bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Recently Added Courses',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) =>
+                                          const RecentlyAddedCoursesMainScreen()));
+                            },
+                            child: const Row(
+                              children: [
+                                Text(
+                                  'See All',
+                                  style:
+                                      TextStyle(color: Colors.lightBlueAccent),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Icon(
+                                  Icons.arrow_forward,
+                                  color: Colors.lightBlueAccent,
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                        itemCount: 3,
+                        itemBuilder: (context,index){
+                      return const RecentCourseListItem();
+                    })
+                  ],
+                ),
+              )
             ],
           ),
         ),
