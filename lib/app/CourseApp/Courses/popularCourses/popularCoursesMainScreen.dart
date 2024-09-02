@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class PopularCoursesMainScreen extends StatefulWidget {
   const PopularCoursesMainScreen({super.key});
 
@@ -10,25 +11,28 @@ class PopularCoursesMainScreen extends StatefulWidget {
 
 class _PopularCoursesMainScreenState extends State<PopularCoursesMainScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
     final cWidth = MediaQuery.sizeOf(context).width;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white70,
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          leading: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              )),
-          title: const Text(
-            'Popular Courses',
-            style: TextStyle(color: Colors.white),
-          ),
+    final cHeight = MediaQuery.sizeOf(context).height;
+    return Scaffold(
+      backgroundColor: Colors.white70,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            )),
+        title: const Text(
+          'Popular Courses',
+          style: TextStyle(color: Colors.white),
         ),
-        body: Column(
+      ),
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             Container(
               color: Colors.white,
@@ -52,10 +56,14 @@ class _PopularCoursesMainScreenState extends State<PopularCoursesMainScreen> {
                   leading: const Icon(Icons.search),
                 )),
               ),
-            )
+            ),
+            const SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
     );
   }
 }
+

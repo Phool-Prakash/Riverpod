@@ -37,16 +37,6 @@ void main() {
       ]
     );
 
-    //Read initial value of the counter
-    expect(containers.read(counterProvider),1);
-
-    //Multiply the counter
-    containers.read(counterProvider.notifier).state +=2;
-
-    //Read value after Multiply
-    expect(containers.read(counterProvider), 3);
-
-    expect(containers.read(multiProvider), 3);
   });
   runApp(const CourseApp());
   // runApp(const ProviderScope(child: App1()));
